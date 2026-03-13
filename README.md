@@ -99,6 +99,3 @@ panel-fav golang-pro          # pin an agent
 - PowerShell ✓
 - CMD ✓ (after install, new terminal needed)
 
-## Source
-
-GitHub: [zfc20/alphasite](https://github.com/zfc20/alphasite/tree/master/claude-panel)
