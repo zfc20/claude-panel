@@ -38,13 +38,29 @@ Open a new terminal. Type `claude`. Done.
 
 ---
 
+## Platform support
+
+| Platform | Terminal split | How |
+|----------|---------------|-----|
+| **Windows** | Windows Terminal | `wt` split-pane |
+| **macOS** | Any terminal | tmux split |
+| **Linux** | Any terminal | tmux split |
+
+**macOS / Linux:** requires [tmux](https://github.com/tmux/tmux)
+```bash
+brew install tmux          # macOS
+sudo apt install tmux      # Ubuntu/Debian
+```
+
+---
+
 ## What's in the panel
 
 | Section | What it shows |
 |---------|--------------|
 | **CONTEXT** | CLAUDE.md size vs 40 KB limit — turns red when exceeded |
 | **GIT** | Branch, pending files, last commit message |
-| **MEMORY** | How many memory files are saved in `~/.claude/.../memory/` |
+| **MEMORY** | How many memory files are in `~/.claude/.../memory/` |
 | **SKILLS** | All installed skills — invoke with `/skill-name` |
 | **AGENTS** | All installed agents with one-line descriptions |
 | **FAVORITES** | Pinned items (★) shown first |
@@ -76,12 +92,7 @@ marketplace
 ```
 
 Select a category → browse agents → read description → press `k` to install.
-Already installed agents show `✓`.
-
-Agents are installed via:
-```bash
-npx claude-code-templates@latest --agent <category>/<name>
-```
+Already-installed agents show `✓`.
 
 ---
 
@@ -98,25 +109,46 @@ npx claude-code-templates@latest --agent <category>/<name>
 
 ---
 
-## Requirements
-
-- **Windows Terminal** — `winget install Microsoft.WindowsTerminal`
-- **Node.js 16+**
-- **Claude Code** — `npm install -g @anthropic-ai/claude-code`
-
-Works from PowerShell and CMD.
-
----
-
 ## How it works
 
 `npx claude-panel` does a one-time setup:
 
+**Windows:**
 1. Installs `terminal-panel.ps1` → `~/.claude/`
-2. Adds `claude` + `marketplace` functions to your PowerShell `$PROFILE`
+2. Adds `claude`, `marketplace`, `panel-lang`, `panel-fav` to your PowerShell `$PROFILE`
 3. Creates `~/.claude/claude.cmd` so it also works from CMD
 
-After that, `claude` always opens a split terminal — your session on the left, the live panel on the right.
+**macOS / Linux:**
+1. Installs `panel.sh` → `~/.claude/` (bash, runs in right tmux pane)
+2. Installs `marketplace.js` → `~/.claude/`
+3. Adds `claude`, `marketplace`, `panel-lang`, `panel-fav` to `~/.zshrc` (or `~/.bashrc`)
+
+After setup, every `claude` invocation opens a split — your session on the left, the live panel on the right.
+
+---
+
+## Favorites
+
+```bash
+panel-fav /docker-expert      # pin a skill
+panel-fav golang-pro          # pin an agent
+```
+
+Pinned items appear at the top of the panel with a `★` mark.
+
+---
+
+## Requirements
+
+| | Windows | macOS | Linux |
+|-|---------|-------|-------|
+| Node.js 16+ | ✓ | ✓ | ✓ |
+| Claude Code | ✓ | ✓ | ✓ |
+| Windows Terminal | ✓ | — | — |
+| tmux | — | ✓ | ✓ |
+
+Install Claude Code: `npm install -g @anthropic-ai/claude-code`
+Install Windows Terminal: `winget install Microsoft.WindowsTerminal`
 
 ---
 

@@ -9,7 +9,7 @@
     "postinstall": "node bin/claude-panel.js --install"
   },
   "keywords": ["claude", "claude-code", "panel", "terminal", "ai", "developer-tools"],
-  "author": "alpha-finans",
+  "author": "zfc20",
   "license": "MIT",
   "engines": { "node": ">=16" }
 }
