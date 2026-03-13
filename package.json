@@ -1,0 +1,15 @@
+{
+  "name": "claude-panel",
+  "version": "1.0.0",
+  "description": "Claude Code için terminal split panel — skills, agents, context durumu",
+  "bin": {
+    "claude-panel": "./bin/claude-panel.js"
+  },
+  "scripts": {
+    "postinstall": "node bin/claude-panel.js --install"
+  },
+  "keywords": ["claude", "claude-code", "panel", "terminal", "ai", "developer-tools"],
+  "author": "alpha-finans",
+  "license": "MIT",
+  "engines": { "node": ">=16" }
+}
